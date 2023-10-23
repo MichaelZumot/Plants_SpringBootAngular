@@ -1,1 +1,10 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.header {
+    text-align: center;
+    margin-top: 50px; /* Adjust the top margin based on your preference */
+  }
+  
+  .header h1 {
+    color: #333; /* Set the color of the text */
+  }

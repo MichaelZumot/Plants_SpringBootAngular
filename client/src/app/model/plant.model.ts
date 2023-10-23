@@ -1,11 +1,10 @@
-// plant.model.ts
 export const WateringSchedule = {
-  DAILY: 1,
-  WEEKLY: 2,
-  BIWEEKLY: 3,
-  ASNEEDED: 4,
+  DAILY: 'DAILY',
+  WEEKLY: 'WEEKLY',
+  BIWEEKLY: 'BIWEEKLY',
+  ASNEEDED: 'ASNEEDED',
 } as const;
-
+  
 export type WateringSchedule = typeof WateringSchedule[keyof typeof WateringSchedule];
 
 export interface Plant {

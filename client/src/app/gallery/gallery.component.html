@@ -1,7 +1,6 @@
-<h1>GALLERY | PlantsApp</h1>
 
-<div class="gallery-header">
-  <!-- Your gallery header content goes here -->
+<div class="header">
+  <h1>GALLERY | PlantsApp</h1>
 </div>
 
 <div class="plant-gallery">
@@ -11,8 +10,8 @@
       <mat-card-title>{{ plant.name }}</mat-card-title>
       <mat-card-content><strong>Watering:</strong> 
         <strong>Brief:</strong> {{ plant.description }}<br />
-        <strong>Watering:</strong> {{ plant.wateringSchedule }}<br />
-
+        <strong>Watering:</strong> {{ getWateringScheduleDescription(plant.wateringSchedule) }}<br />
+        
 
         <img [src]="getPlantImageUrl(plant)" alt="{{plant.name}}" style="height: 350px; width:500;">
 
@@ -54,6 +53,7 @@
     </form>
   </mat-card-actions>
 </div>
+<app-toolbar></app-toolbar>
 
 
 <router-outlet></router-outlet>

@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, NgModule, OnInit } from '@angular/core';
 import { Plant, WateringSchedule } from '../model/plant.model';
 import { PlantService } from '../service/plants.service';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-gallery',
@@ -10,6 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./gallery.component.css'],
   changeDetection: ChangeDetectionStrategy.Default,
   providers: [], 
+
 })
 export class GalleryComponent implements OnInit {
   plants: Plant[] = [];

@@ -19,6 +19,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -49,6 +50,8 @@ const routes: Routes = [
     MatSelectModule,
     FormsModule,
     MatDialogModule,
+    MatIconModule,
+
   ],
   providers: [
     MatDialog,

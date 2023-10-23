@@ -25,9 +25,13 @@ public class DatabaseInitializer {
         Plant plant3 = new Plant(3L,"Golden Pothos", "Eppipremnum aureum", "An absolute delight! Grows fast, very low maintenance, can be moduled.", "3",  WateringSchedule.WEEKLY);
         Plant plant4 = new Plant(4L,"Butch", "Smallus GreenusTree", "very low maintanence!", "4", WateringSchedule.WEEKLY);
         Plant plant5 = new Plant(5L,"Monstera", "Monstea Delicosa", "beautiful plant with air roots. Must be watered regularly!" , "5", WateringSchedule.WEEKLY);
-        Plant plant6 = new Plant(6L,"Mother Spider Plant", "Spider Plant", "Gift from Elise, been around since 2021. buds can be replanted." , "6", WateringSchedule.WEEKLY);
+        Plant plant6 = new Plant(6L,"Bamboomium", "Spider Plant", "Gift from Elise, been around since 2021. buds can be replanted." , "6", WateringSchedule.WEEKLY);
         Plant plant7 = new Plant(7L,"Terrarium", "Bamboo terrarium", "Bought from a woman who made it. low maintenace be replanted." , "7", WateringSchedule.WEEKLY);
-      plantsRepository.saveAll(Arrays.asList(plant1, plant2, plant3, plant4, plant5, plant6, plant7));
+        Plant plant8 = new Plant(8L,"Seconqua", "Bamboo terrarium", "Bought from a woman who made it. low maintenace be replanted." , "7", WateringSchedule.ASNEEDED);
+        Plant plant9 = new Plant(9L,"Masha", "Bamboo terrarium", "Bought from a woman who made it. low maintenace be replanted." , "7", WateringSchedule.BIWEEKLY);
+        Plant plant10 = new Plant(10L,"Leo", "Bamboo terrarium", "Bought from a woman who made it. low maintenace be replanted." , "7", WateringSchedule.WEEKLY);
+
+        plantsRepository.saveAll(Arrays.asList(plant1, plant2, plant3, plant4, plant5, plant6, plant7,plant8,plant9,plant10));
 
     }
 }
