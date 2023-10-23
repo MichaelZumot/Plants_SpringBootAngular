@@ -1,0 +1,59 @@
+<h1>GALLERY | PlantsApp</h1>
+
+<div class="gallery-header">
+  <!-- Your gallery header content goes here -->
+</div>
+
+<div class="plant-gallery">
+  <div *ngFor="let plant of plants" class="plant-card">
+    <mat-card>
+      {{ plant.latinName }}
+      <mat-card-title>{{ plant.name }}</mat-card-title>
+      <mat-card-content><strong>Watering:</strong> 
+        <strong>Brief:</strong> {{ plant.description }}<br />
+        <strong>Watering:</strong> {{ plant.wateringSchedule }}<br />
+
+
+        <img [src]="getPlantImageUrl(plant)" alt="{{plant.name}}" style="height: 350px; width:500;">
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div>
+  <mat-card-title> Add a new plant: </mat-card-title>
+  <mat-card-actions>
+    <form (submit)="addPlant()">
+      <input
+        type="text"
+        [(ngModel)]="newPlant.name"
+        name="name"
+        placeholder="Name"
+        required
+      /><br />
+      <input 
+        type="text"
+        [(ngModel)]="newPlant.latinName"
+        name="latinName"
+        placeholder="LatinName"
+      /><br />
+      <input
+        type="text"
+        [(ngModel)]="newPlant.description"
+        name="description"
+        placeholder="Description"
+      /><br />
+      <label for="wateringSchedule">Watering Schedule:</label><br />
+      <select [(ngModel)]="newPlant.wateringSchedule" name="wateringSchedule">
+        <br />
+        <option *ngFor="let schedule of wateringSchedules" [value]="schedule">
+          {{ schedule }}
+        </option>
+      </select>
+      <button type="submit">Add Plant</button>
+    </form>
+  </mat-card-actions>
+</div>
+
+
+<router-outlet></router-outlet>
