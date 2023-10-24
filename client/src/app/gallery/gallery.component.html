@@ -11,14 +11,14 @@
       <mat-card-content><strong>Watering:</strong> 
         <strong>Brief:</strong> {{ plant.description }}<br />
         <strong>Watering:</strong> {{ getWateringScheduleDescription(plant.wateringSchedule) }}<br />
-        
-
         <img [src]="getPlantImageUrl(plant)" alt="{{plant.name}}" style="height: 350px; width:500;">
 
       </mat-card-content>
+      <button (click)="deletePlant(plant.id)">delete</button>
     </mat-card>
   </div>
 </div>
+
 <div>
   <mat-card-title> Add a new plant: </mat-card-title>
   <mat-card-actions>

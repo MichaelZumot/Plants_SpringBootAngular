@@ -76,6 +76,15 @@ export class GalleryComponent implements OnInit {
     }
   }
 
+  deletePlant(id: number): void {
+
+    this.plantService.deletePlant(id).subscribe(() => {
+      // Remove the deleted plant from the list
+      this.plants = this.plants.filter((plant) => plant.id !== id);
+      console.log("Deleting plant with ID: ", id);
+
+    });
+  }
   getWateringScheduleDescription(schedule: WateringSchedule): string {
     switch (schedule) {
       case WateringSchedule.DAILY:
