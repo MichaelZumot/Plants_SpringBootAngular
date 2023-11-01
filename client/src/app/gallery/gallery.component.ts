@@ -72,7 +72,8 @@ export class GalleryComponent implements OnInit {
       return `assets/images/${plant.id}.png`;
     } else {
       console.error('Invalid plant or plant id:', plant);
-      return 'assets/images/${plant.id}.png'; // or some default image URL
+      console.log("plant image url is " + "assets/images/${plant.id}.png", )
+      return 'assets/images/${plant.id}.png'; 
     }
   }
 

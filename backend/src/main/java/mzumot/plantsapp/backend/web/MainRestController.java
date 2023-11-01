@@ -1,4 +1,5 @@
 package mzumot.plantsapp.backend.web;
+
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,20 +23,19 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 @CrossOrigin(origins = "http://localhost:4200")
 public class MainRestController {
 
-        @Autowired
-        private PlantsService plantsService;
+    @Autowired
+    private PlantsService plantsService;
 
+    public MainRestController(PlantsService plantsService) {
+        this.plantsService = plantsService;
+    }
 
-        public MainRestController(PlantsService plantsService){
-                this.plantsService=plantsService;
-        }
-        
-        @GetMapping("/plants")
-        public List<Plant> getAllPlants() {
-                return plantsService.getAllPlants();
-        }
+    @GetMapping("/plants")
+    public List<Plant> getAllPlants() {
+        return plantsService.getAllPlants();
+    }
 
-   @GetMapping("/{id}")
+    @GetMapping("/plants/{id}")
     public ResponseEntity<Plant> getPlantById(@PathVariable Long id) {
         Plant plant = plantsService.getPlantById(id);
         if (plant != null) {
@@ -51,11 +51,16 @@ public class MainRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedPlant);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletePlant(@PathVariable Long id) {
-        plantsService.deletePlant(id);
-        return ResponseEntity.noContent().build();
+        try {
+            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX DELETING PLANT WITH ID: " + id.toString());
+            plantsService.deletePlant(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            e.printStackTrace(); // Log the exception
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
-
 
 }

@@ -1,27 +1,29 @@
 package mzumot.plantsapp.backend.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Plant {
+public class Plant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @NotBlank
+    @Column(unique = true) // Ensure uniqueness
     private String name;
 
     private String latinName;
@@ -32,11 +34,11 @@ public class Plant {
 
     private WateringSchedule wateringSchedule;
 
-
-    public Plant(long id, String name) {
+    public Plant(int id, String name) {
         this.id = id;
-        this.name = name;}
-        
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -63,8 +65,7 @@ public class Plant {
                 ", latinName='" + getLatinName() + "'" +
                 ", description='" + getDescription() + "'" +
                 ", wateringSchedule='" + getWateringSchedule() + "'" +
-                "}"
-        ;
+                "}";
     }
 
 }

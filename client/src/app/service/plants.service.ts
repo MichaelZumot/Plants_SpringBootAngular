@@ -11,20 +11,19 @@ export class PlantService {
 
   constructor(private http: HttpClient) {}
 
-
-  
+ 
   getPlants(): Observable<any> {
     return this.http.get(this.backendUrl);
   }
-
 
   addPlant(newPlant: Plant): Observable<Plant> {
     return this.http.post<Plant>(this.backendUrl, newPlant);
   }
 
-  
   deletePlant(id: number): Observable<void> {
+    console.log("deleting plant with id", id);
     return this.http.delete<void>(`${this.backendUrl}/${id}`);
-  }
+}
+
   
 }

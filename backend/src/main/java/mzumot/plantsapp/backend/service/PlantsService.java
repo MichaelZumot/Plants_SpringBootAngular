@@ -18,7 +18,6 @@ public class PlantsService {
     @Autowired
     private PlantsRepository plantsRepository;
  
-   
     public List<Plant> getAllPlants() {
         return plantsRepository.findAll();
     }
@@ -34,5 +33,4 @@ public class PlantsService {
     public void deletePlant(Long id) {
         plantsRepository.deleteById(id);
     }
-
 }

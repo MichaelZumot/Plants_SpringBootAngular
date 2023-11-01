@@ -55,10 +55,5 @@ export class HomeComponent implements OnInit {
         default: return 'Unknown';
     }
   }
-  deletePlant(id: number): void {
-    this.plantService.deletePlant(id).subscribe(() => {
-      // Remove the deleted plant from the list
-      // this.plants = this.plants.filter((plant) => plant.id !== id);
-    });
-  }
+
 }

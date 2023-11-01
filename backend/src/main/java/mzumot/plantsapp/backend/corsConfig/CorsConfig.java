@@ -1,4 +1,5 @@
 package mzumot.plantsapp.backend.corsConfig;
+
 import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,7 @@ public class CorsConfig implements WebMvcConfigurer {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("OPTIONS", "GET", "POST", "PUT", "DELETE"));  // Include OPTIONS
+        configuration.setAllowedMethods(Arrays.asList("OPTIONS", "GET", "POST", "PUT", "DELETE", "PATCH"));
         configuration.setAllowCredentials(true);
         configuration.setMaxAge((long) 3600);
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
@@ -25,4 +26,5 @@ public class CorsConfig implements WebMvcConfigurer {
 
         return source;
     }
+
 }
