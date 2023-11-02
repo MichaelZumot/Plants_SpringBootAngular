@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Plant } from '../model/plant.model';
 
@@ -8,7 +8,9 @@ import { Plant } from '../model/plant.model';
 })
 export class PlantService {
   private backendUrl = 'http://localhost:8080/api/plants'; 
+  private plantApiUrl = 'https://trefle.io/api/v1/plants'; // Replace with the actual plant API URL
 
+  
   constructor(private http: HttpClient) {}
 
  
@@ -25,5 +27,24 @@ export class PlantService {
     return this.http.delete<void>(`${this.backendUrl}/${id}`);
 }
 
-  
+//Plant API
+getPlantApiData(): Observable<any> {
+  return this.http.get(this.plantApiUrl);
+}
+
+searchPlants(query: string): Observable<any> {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  console.log("searchPlants query is : ", query);
+
+  const params = { q: query };
+
+  return this.http.get('http://localhost:3000/api/plants/search', { headers: httpOptions.headers, params });
+}
+
+
 }

@@ -6,7 +6,7 @@
 <div class="plant-gallery">
   <div *ngFor="let plant of plants" class="plant-card">
     <mat-card>
-      {{ plant.latinName }}
+      <strong>{{ plant.latinName }}</strong>
       <mat-card-title>{{ plant.name }}</mat-card-title>
       <mat-card-content><strong>Watering:</strong> 
         <strong>Brief:</strong> {{ plant.description }}<br />

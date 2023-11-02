@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Plant, WateringSchedule } from '../model/plant.model';
 import { PlantService } from '../service/plants.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, NgModule, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Plant, WateringSchedule } from '../model/plant.model';
 import { PlantService } from '../service/plants.service';
 

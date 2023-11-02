@@ -19,7 +19,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
     HomeComponent,
     GalleryComponent,
     ToolbarComponent,
+    SearchbarComponent,
   ],
   imports: [
     BrowserModule,
