@@ -7,7 +7,7 @@ import java.util.List;
 import mzumot.plantsapp.backend.model.Plant;
 
 @Repository
-public interface PlantsRepository extends JpaRepository<Plant, Long> {
+public interface PlantsRepository extends JpaRepository<Plant, Integer> {
  
     List<Plant> findAll();
 

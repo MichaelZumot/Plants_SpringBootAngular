@@ -22,8 +22,11 @@ export class GalleryComponent implements OnInit {
   };
 
   wateringSchedules = Object.keys(WateringSchedule);
+  imageUrl: string | ArrayBuffer | null = null;
 
-  constructor(private plantService: PlantService) {}
+  constructor(private plantService: PlantService) {
+    this.imageUrl = null; 
+  }
 
   ngOnInit(): void {
     this.fetchPlants();
@@ -65,17 +68,24 @@ export class GalleryComponent implements OnInit {
     );
   }
 
-
-  getPlantImageUrl(plant: Plant): string {
-  
+  getPlantImage(plant: Plant): string {
     if (plant && plant.id !== null && plant.id !== undefined) {
-      return `assets/images/${plant.id}.png`;
+      return `http://localhost:8080/api/images/${plant.id}`;
     } else {
       console.error('Invalid plant or plant id:', plant);
-      console.log("plant image url is " + "assets/images/${plant.id}.png", )
-      return 'assets/images/${plant.id}.png'; 
+      return 'assets/images/default.png'; // Provide a default image or handle the case accordingly
     }
   }
+
+  getImageUrlString(name: string): string {
+    if (name != null || name != "") {
+      return `http://localhost:8080/api/images/${name}`;
+    } else {
+      console.error('Invalid image name:', name);
+      return 'assets/images/default.png'; // Provide a default image or handle the case accordingly
+    }
+  }
+
 
   deletePlant(id: number): void {
 
@@ -101,5 +111,31 @@ export class GalleryComponent implements OnInit {
     }
   }
 
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
   
+    if (file && file.type === 'image/png') {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.imageUrl = e.target?.result || null; // Handle the case where e.target?.result is undefined
+      };
+  
+      reader.readAsDataURL(file);
+    } else {
+      // Handle invalid file type (if needed)
+      console.error('Invalid file type. Please choose a PNG image.');
+    }
+  }
+
+  onSubmit(): void {
+    // Add logic to save the image to the server or perform other actions
+    // For example, you can use HttpClient to send the image to the server
+
+    // const formData = new FormData();
+    // formData.append('plantImage', file);
+
+    // this.http.post('your-backend-endpoint', formData).subscribe(response => {
+    //   console.log('Image uploaded successfully', response);
+    // });
+  }
 }

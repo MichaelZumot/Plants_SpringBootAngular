@@ -36,7 +36,7 @@ public class MainRestController {
     }
 
     @GetMapping("/plants/{id}")
-    public ResponseEntity<Plant> getPlantById(@PathVariable Long id) {
+    public ResponseEntity<Plant> getPlantById(@PathVariable int id) {
         Plant plant = plantsService.getPlantById(id);
         if (plant != null) {
             return ResponseEntity.ok(plant);
@@ -52,9 +52,9 @@ public class MainRestController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deletePlant(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePlant(@PathVariable int id) {
         try {
-            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX DELETING PLANT WITH ID: " + id.toString());
+            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX DELETING PLANT WITH ID: " + id);
             plantsService.deletePlant(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {

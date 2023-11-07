@@ -4,6 +4,7 @@
 /client/.angular/cache/
 /client/src/assets/images
 /backend/data
+/backend/src/main/resources/imgs
 node_modules
 
 HELP.md
