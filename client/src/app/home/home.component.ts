@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
     latinName: "",
     description: "",
     wateringSchedule: WateringSchedule.BIWEEKLY,
+    lastWatered:new Date()
   };
 
   wateringSchedules = Object.keys(WateringSchedule);
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
             latinName: "",
             description: "",
             wateringSchedule: WateringSchedule.DAILY,
+            lastWatered:new Date()
           };
         } else {
           console.error("Error: Server response is null.");

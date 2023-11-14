@@ -30,6 +30,15 @@ export class PlantService {
     return this.http.get(this.plantApiUrl);
   }
 
+  updatePlant(plant: Plant): Observable<void> {
+    return this.http.put<void>(`${this.backendUrl}/${plant.id}`, plant);
+  }
+
+  updateLastWatered(plantId: number): Observable<void> {
+    const url = `${this.backendUrl}/${plantId}/update-last-watered`;
+    return this.http.patch<void>(url, {});
+  }
+  
   searchPlants(query: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

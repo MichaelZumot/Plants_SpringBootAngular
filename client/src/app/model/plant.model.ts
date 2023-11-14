@@ -13,4 +13,5 @@ export interface Plant {
   latinName: string;
   description: string;
   wateringSchedule: WateringSchedule;
+  lastWatered: Date;
 }

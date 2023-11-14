@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
     GalleryComponent,
     ToolbarComponent,
     SearchbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

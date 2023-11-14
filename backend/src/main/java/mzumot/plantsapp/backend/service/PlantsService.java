@@ -1,5 +1,6 @@
 package mzumot.plantsapp.backend.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,9 @@ public class PlantsService {
 
     public void deletePlant(int id) {
         plantsRepository.deleteById(id);
+    }
+
+    public void updateLastWatered(Long plantId, Date lastWatered) {
+        plantsRepository.updateLastWatered(plantId, lastWatered);
     }
 }

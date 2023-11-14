@@ -1,0 +1,43 @@
+/* Footer Styles */
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%; /* Full width */
+  background-color: #330847; /* Choose your background color */
+  color: #fff; /* Choose your text color */
+  text-align: center;
+  padding: 25px; /* Add some padding for better visibility */
+}
+
+/* Optional: Style links inside the footer */
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+.logo {
+  display: block;
+}
+
+.logo-container {
+    display: block;
+}
+
+
+.footer-grid {
+    display: grid;
+    grid-template-rows: 1fr; /* One row to contain three vertical columns */
+    grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+    gap: 10px; /* Adjust the gap between columns */
+    background-color: #f0f0f0; /* Set background color */
+    padding: 20px; /* Add padding for better spacing */
+  }
+  
+  .column {
+    /* You can style each column individually if needed */
+    border: 1px solid #ccc; /* Add a border for separation */
+    padding: 10px; /* Adjust padding for content spacing */
+  }

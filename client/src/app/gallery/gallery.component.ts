@@ -19,6 +19,7 @@ export class GalleryComponent implements OnInit {
     latinName: '',
     description: '',
     wateringSchedule: WateringSchedule.BIWEEKLY,
+    lastWatered:new Date()
   };
 
   wateringSchedules = Object.keys(WateringSchedule);
@@ -57,6 +58,7 @@ export class GalleryComponent implements OnInit {
             latinName: '',
             description: '',
             wateringSchedule: WateringSchedule.DAILY,
+            lastWatered:new Date()
           };
         } else {
           console.error('Error: Server response is null.');
@@ -90,7 +92,7 @@ export class GalleryComponent implements OnInit {
   deletePlant(id: number): void {
 
     this.plantService.deletePlant(id).subscribe(() => {
-      // Remove the deleted plant from the list
+      // Remove deleted plant from list
       this.plants = this.plants.filter((plant) => plant.id !== id);
       console.log("Deleting plant with ID: ", id);
 
@@ -127,15 +129,26 @@ export class GalleryComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    // Add logic to save the image to the server or perform other actions
-    // For example, you can use HttpClient to send the image to the server
-
-    // const formData = new FormData();
-    // formData.append('plantImage', file);
-
-    // this.http.post('your-backend-endpoint', formData).subscribe(response => {
-    //   console.log('Image uploaded successfully', response);
-    // });
+  updateLastWatered(plant: Plant): void {
+    this.plantService.updateLastWatered(plant.id).subscribe(
+      () => {
+        console.log('Last watered timestamp updated successfully.');
+        // Refresh the plant list or update the local data accordingly
+      },
+      (error) => {
+        console.error('Error updating last watered timestamp:', error);
+      }
+    );
   }
+  // onSubmit(): void {
+  //   // Add logic to save the image to the server or perform other actions
+  //   // For example, you can use HttpClient to send the image to the server
+
+  //   // const formData = new FormData();
+  //   // formData.append('plantImage', file);
+
+  //   // this.http.post('your-backend-endpoint', formData).subscribe(response => {
+  //   //   console.log('Image uploaded successfully', response);
+  //   // });
+  // }
 }

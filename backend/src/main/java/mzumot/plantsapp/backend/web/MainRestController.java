@@ -1,8 +1,10 @@
 package mzumot.plantsapp.backend.web;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,4 +65,10 @@ public class MainRestController {
         }
     }
 
+    @PatchMapping("/{id}/update-last-watered")
+    public ResponseEntity<?> updateLastWatered(@PathVariable Long id) {
+        // Implement logic to update lastWatered in your service
+        plantsService.updateLastWatered(id, new Date());
+        return ResponseEntity.ok().build();
+    }
 }
