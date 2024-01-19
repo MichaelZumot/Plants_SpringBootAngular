@@ -2,6 +2,7 @@ package mzumot.plantsapp.backend.repository;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -33,8 +34,13 @@ public class DatabaseInitializer {
         Plant plant9 = new Plant(9,"Masha", "Bamboo terrarium", "Bought from a woman who made it. low maintenace be replanted." , "9", WateringSchedule.BIWEEKLY,date);
         Plant plant10 = new Plant(10,"Leo", "Bamboo terrarium", "Bought from a woman who made it. low maintenace be replanted." , "10", WateringSchedule.WEEKLY,date);
 
-        plantsRepository.saveAll(Arrays.asList(plant1, plant2, plant3, plant4, plant5, plant6, plant7,plant8,plant9,plant10));
+        plantsRepository.saveAll(extracted(plant1, plant2, plant3, plant4, plant5, plant6, plant7, plant8, plant9, plant10));
 
+    }
+
+    private List<Plant> extracted(Plant plant1, Plant plant2, Plant plant3, Plant plant4, Plant plant5, Plant plant6,
+            Plant plant7, Plant plant8, Plant plant9, Plant plant10) {
+        return Arrays.asList(plant1, plant2, plant3, plant4, plant5, plant6, plant7,plant8,plant9,plant10);
     }
 }
 

@@ -70,7 +70,7 @@ export class PlantService {
       return `http://localhost:8080/api/images/byName/${name}`;
     } else {
       console.error('Invalid image name:', name);
-      return 'assets/images/default.png'; // Provide a default image or handle the case accordingly
+      return 'assets/resource/mainbg.png'; // Provide a default image or handle the case accordingly
     }
   }
 }

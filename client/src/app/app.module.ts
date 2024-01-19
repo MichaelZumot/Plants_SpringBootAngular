@@ -22,10 +22,14 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { PlantsComponent } from './plants/plants.component';
+import { MedicheckComponent } from './medicheck/medicheck.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'gallery', component: GalleryComponent },
+  { path: 'plants', component: PlantsComponent },
+  { path: 'medicheck', component: MedicheckComponent },
   { path: 'about', component: AboutComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
@@ -39,6 +43,8 @@ const routes: Routes = [
     ToolbarComponent,
     SearchbarComponent,
     FooterComponent,
+    PlantsComponent,
+    MedicheckComponent,
   ],
   imports: [
     BrowserModule,

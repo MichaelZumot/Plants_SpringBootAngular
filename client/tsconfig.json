@@ -20,10 +20,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "es2020",
+    "target": "ES2015",
+    "module": "es2015",
     "lib": [
-      "es2020",
+      "es2015",
       "dom"
     ],
     "useDefineForClassFields": false
@@ -33,9 +33,9 @@
     "start": "ng serve --proxy-config proxt.conf.json",
   },
   "angularCompilerOptions": {
-    
-    "enableI18nLegacyMessageIdFormat": false,
+    "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
+    "enableI18nLegacyMessageIdFormat": false,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
     "enableIvy": true,
