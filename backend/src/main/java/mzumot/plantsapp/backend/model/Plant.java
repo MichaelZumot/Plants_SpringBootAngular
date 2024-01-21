@@ -24,7 +24,7 @@ public class Plant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(unique = true) // Ensure uniqueness
     private String name;
@@ -41,7 +41,7 @@ public class Plant implements Serializable {
     @Column(name = "last_watered")
     private Date lastWatered;
 
-    public Plant(int id, String name) {
+    public Plant(Long id, String name) {
         this.id = id;
         this.name = name;
     }

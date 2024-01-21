@@ -38,7 +38,7 @@ public class MainRestController {
     }
 
     @GetMapping("/plants/{id}")
-    public ResponseEntity<Plant> getPlantById(@PathVariable int id) {
+    public ResponseEntity<Plant> getPlantById(@PathVariable Long id) {
         Plant plant = plantsService.getPlantById(id);
         if (plant != null) {
             return ResponseEntity.ok(plant);
@@ -54,7 +54,7 @@ public class MainRestController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deletePlant(@PathVariable int id) {
+    public ResponseEntity<Void> deletePlant(@PathVariable Long id) {
         try {
             System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX DELETING PLANT WITH ID: " + id);
             plantsService.deletePlant(id);

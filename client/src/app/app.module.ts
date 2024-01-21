@@ -15,7 +15,6 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +23,7 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PlantsComponent } from './plants/plants.component';
 import { MedicheckComponent } from './medicheck/medicheck.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,11 +40,11 @@ const routes: Routes = [
     AboutComponent,
     HomeComponent,
     GalleryComponent,
-    ToolbarComponent,
     SearchbarComponent,
     FooterComponent,
     PlantsComponent,
     MedicheckComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

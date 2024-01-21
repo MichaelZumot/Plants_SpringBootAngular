@@ -1,34 +1,31 @@
 <div class="header">
     <h1>PlantScopus</h1>
   </div>
-  
-  <div class="plant-gallery">
+  <app-searchbar></app-searchbar>
+  <br>
+
+
+
+  <div class="card">
+    <!-- <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap"> -->
     <div *ngFor="let plant of plants" class="plant-card">
-      <mat-card>
-        <strong>{{ plant.latinName }}</strong>
-        <mat-card-title>{{ plant.name }}</mat-card-title>
-        <mat-card-content> 
-          <strong>Brief:</strong> 
-          {{ plant.description }}<br />
-          <strong>Watering Schedule:</strong>
-          {{ getWateringScheduleDescription(plant.wateringSchedule) }}<br />
-          <strong>Last Watering Date:</strong> 
-          {{ plant.lastWatered | date }}<br />
-          <img
-            [src]="getPlantImage(plant)"
-            alt="{{ plant.name }}"
-            style="height: 350px; width: 500"
-          />
-          <button mat-button color="primary" (click)="updateLastWatered(plant)">
-            Water Plant
-          </button>
-        </mat-card-content>
-        <button mat-button color="warn" (click)="deletePlant(plant.id)">Delete -</button>
-  
-      </mat-card>
+      <div class="card-body">
+      <h4 class="card-title">{{ plant.name}}</h4>
+      {{ plant.description }}<br />
+      <strong>💧💧Watering scheudle:</strong>
+      {{ getWateringScheduleDescription(plant.wateringSchedule) }}<br />
+      <strong>🗓️Last watered:</strong> 
+      {{ plant.lastWatered | date }}<br />
+      <img
+        [src]="getPlantImage(plant)"
+        alt="{{ plant.name }}"
+        style="height: 350px; width: 500"
+      />
+      <button mat-button color="primary" (click)="updateLastWatered(plant)"></button>
+      <a (click)="updateLastWatered(plant)" class="btn btn-primary">Water</a>
     </div>
   </div>
-  
+
   <div>
     <mat-card-title> Add a new plant: </mat-card-title>
     <mat-card-actions>
@@ -74,8 +71,6 @@
       </form>
     </mat-card-actions>
   </div>
-  <app-toolbar></app-toolbar>
-  <app-searchbar></app-searchbar>
-  
+
   <router-outlet></router-outlet>
   

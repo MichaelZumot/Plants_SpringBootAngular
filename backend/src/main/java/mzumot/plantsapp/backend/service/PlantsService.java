@@ -23,7 +23,7 @@ public class PlantsService {
         return plantsRepository.findAll();
     }
 
-    public Plant getPlantById(int id) {
+    public Plant getPlantById(Long id) {
         return plantsRepository.findById(id).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class PlantsService {
         return plantsRepository.save(plant);
     }
 
-    public void deletePlant(int id) {
+    public void deletePlant(Long id) {
         plantsRepository.deleteById(id);
     }
 

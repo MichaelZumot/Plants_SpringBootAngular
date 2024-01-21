@@ -2,6 +2,8 @@
   <h1>GALLERY | PlantsApp</h1>
 </div>
 
+<app-searchbar></app-searchbar>
+
 <div class="plant-gallery">
   <div *ngFor="let plant of plants" class="plant-card">
     <mat-card>
@@ -74,7 +76,6 @@
     </form>
   </mat-card-actions>
 </div>
-<app-toolbar></app-toolbar>
-<app-searchbar></app-searchbar>
+
 
 <router-outlet></router-outlet>
