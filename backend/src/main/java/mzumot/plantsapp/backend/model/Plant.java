@@ -1,12 +1,6 @@
 package mzumot.plantsapp.backend.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,25 +10,26 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "plants")
 public class Plant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(unique = true) // Ensure uniqueness
+    @Column(name="name", unique = true)
     private String name;
-
+    @Column(name="latin_name")
     private String latinName;
-
+    @Column(name="description")
     private String description;
-
+    @Column(name="profile_picture")
     private String profilePicture;
-
+    @Column(name="watering_schedule")
     private WateringSchedule wateringSchedule;
 
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: mynamai-postgres-container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: misho
+      POSTGRES_PASSWORD: wanknomo
+      POSTGRES_DB: mynamaiDB
+    volumes:
+      - my_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  my_postgres_data:

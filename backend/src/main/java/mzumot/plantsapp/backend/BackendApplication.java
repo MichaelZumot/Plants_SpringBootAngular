@@ -10,7 +10,6 @@ import mzumot.plantsapp.backend.corsConfig.CorsConfig;
 @SpringBootApplication
 @Import(CorsConfig.class)
 
-@ComponentScan(basePackages = "mzumot.plantsapp.backend")
 public class BackendApplication {
 
 	public static void main(String[] args) {
