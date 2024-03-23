@@ -12,6 +12,6 @@ services:
       POSTGRES_DB: mynamaiDB
     volumes:
       - my_postgres_data:/var/lib/postgresql/data
-
+    network_mode: bridge
 volumes:
   my_postgres_data:

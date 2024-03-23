@@ -45,7 +45,7 @@ public class GalleryController {
     @GetMapping("/byName/{name}")
     public ResponseEntity<byte[]> getImageByName(@PathVariable String name) throws IOException {
         ClassPathResource imgFile = new ClassPathResource("imgs/" + name + ".png");
-        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXx image url " + imgFile);
+        System.out.println("image url " + imgFile);
         // Read the input stream into a byte array
         byte[] bytes = readInputStream(imgFile.getInputStream());
 

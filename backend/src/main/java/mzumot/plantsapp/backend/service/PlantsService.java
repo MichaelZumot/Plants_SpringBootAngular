@@ -3,13 +3,14 @@ package mzumot.plantsapp.backend.service;
 import java.util.Date;
 import java.util.List;
 
+import mzumot.plantsapp.backend.model.WateringSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import mzumot.plantsapp.backend.model.Plant;
-import mzumot.plantsapp.backend.repository.PlantsRepository;
+import mzumot.plantsapp.backend.repository.PlantRepository;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,8 +18,8 @@ import mzumot.plantsapp.backend.repository.PlantsRepository;
 public class PlantsService {
 
     @Autowired
-    private PlantsRepository plantsRepository;
- 
+    private PlantRepository plantsRepository;
+
     public List<Plant> getAllPlants() {
         return plantsRepository.findAll();
     }
@@ -37,5 +38,21 @@ public class PlantsService {
 
     public void updateLastWatered(Long plantId, Date lastWatered) {
         plantsRepository.updateLastWatered(plantId, lastWatered);
+    }
+
+    public WateringSchedule mapStringToEnum(String wateringScheduleString) {
+        // Implement your logic to map the string to the enum
+        switch (wateringScheduleString) {
+            case "DAILY":
+                return WateringSchedule.DAILY;
+            case "WEEKLY":
+                return WateringSchedule.WEEKLY;
+            case "BIWEEKLY":
+                return WateringSchedule.BIWEEKLY;
+            case "ASNEEDED":
+                return WateringSchedule.ASNEEDED;
+            default:
+                throw new IllegalArgumentException("Invalid watering schedule: " + wateringScheduleString);
+        }
     }
 }

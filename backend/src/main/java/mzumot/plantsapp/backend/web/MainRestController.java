@@ -32,7 +32,7 @@ public class MainRestController {
         this.plantsService = plantsService;
     }
 
-    @GetMapping("/plants")
+    @GetMapping(value = "/plants")
     public List<Plant> getAllPlants() {
         return plantsService.getAllPlants();
     }
