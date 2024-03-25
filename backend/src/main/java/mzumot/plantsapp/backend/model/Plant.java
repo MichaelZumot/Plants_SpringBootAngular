@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -31,9 +32,8 @@ public class Plant implements Serializable {
     private String profilePicture;
     @Column(name = "watering_schedule")
     private String wateringSchedule;
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_watered")
-    private Date lastWatered;
+    private LocalDate lastWatered;
 
     public Plant(Long id, String name) {
         this.id = id;

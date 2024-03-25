@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS plant (
     description TEXT,
     profile_picture VARCHAR(255),
     watering_schedule VARCHAR(255),
-    last_watered TIMESTAMP
+    last_watered DATE
     );
 
 CREATE TABLE IF NOT EXISTS medicine (

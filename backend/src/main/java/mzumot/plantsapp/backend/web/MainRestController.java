@@ -2,7 +2,10 @@ package mzumot.plantsapp.backend.web;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
+import mzumot.plantsapp.backend.dto.PlantDTO;
+import mzumot.plantsapp.backend.mappers.PlantMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mzumot.plantsapp.backend.model.Plant;
-import mzumot.plantsapp.backend.service.PlantsService;
+import mzumot.plantsapp.backend.service.PlantService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,38 +28,40 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 public class MainRestController {
 
     @Autowired
-    private PlantsService plantsService;
+    private PlantService plantService;
+    @Autowired
+    private PlantMapper plantMapper;
 
-    public MainRestController(PlantsService plantsService) {
-        this.plantsService = plantsService;
+    public MainRestController(PlantService plantsService) {
+        this.plantService = plantsService;
     }
 
     @GetMapping(value = "/plants")
-    public List<Plant> getAllPlants() {
-        return plantsService.getAllPlants();
+    public List<PlantDTO> getAllPlants() {
+        return plantService.getAllPlants();
     }
 
     @GetMapping("/plants/{id}")
-    public ResponseEntity<Plant> getPlantById(@PathVariable Long id) {
-        Plant plant = plantsService.getPlantById(id);
-        if (plant != null) {
-            return ResponseEntity.ok(plant);
+    public ResponseEntity<PlantDTO> getPlantById(@PathVariable Long id) {
+        PlantDTO plantDTO = plantService.getPlantById(id);
+        if (!Objects.isNull(plantDTO)) {
+            return ResponseEntity.ok(plantDTO);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping
-    public ResponseEntity<Plant> savePlant(@RequestBody Plant plant) {
-        Plant savedPlant = plantsService.savePlant(plant);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedPlant);
+    public ResponseEntity<PlantDTO> savePlant(@RequestBody PlantDTO plant) {
+        plantService.savePlant(plant);
+        return ResponseEntity.status(HttpStatus.CREATED).body(plant);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletePlant(@PathVariable Long id) {
         try {
-            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX DELETING PLANT WITH ID: " + id);
-            plantsService.deletePlant(id);
+            System.out.println("Deleting plant with ID: " + id);
+            plantService.deletePlant(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             e.printStackTrace(); // Log the exception
@@ -67,8 +71,9 @@ public class MainRestController {
 
     @PatchMapping("/{id}/update-last-watered")
     public ResponseEntity<?> updateLastWatered(@PathVariable Long id) {
-        // Implement logic to update lastWatered in your service
-        plantsService.updateLastWatered(id, new Date());
+        Date date  = new Date();
+        PlantDTO dto = plantService.getPlantById(id);
+        plantService.updateLastWatered(dto);
         return ResponseEntity.ok().build();
     }
 }

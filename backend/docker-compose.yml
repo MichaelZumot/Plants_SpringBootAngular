@@ -5,13 +5,25 @@ services:
     image: postgres:latest
     container_name: mynamai-postgres-container
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     environment:
       POSTGRES_USER: misho
       POSTGRES_PASSWORD: wanknomo
       POSTGRES_DB: mynamaiDB
     volumes:
       - my_postgres_data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "secret"
+    ports:
+      - "4040:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
     network_mode: bridge
 volumes:
   my_postgres_data:
+  pgadmin_data:
+
