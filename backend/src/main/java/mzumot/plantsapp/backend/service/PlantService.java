@@ -1,40 +1,31 @@
 package mzumot.plantsapp.backend.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import mzumot.plantsapp.backend.dto.PlantDTO;
 import mzumot.plantsapp.backend.mappers.PlantMapper;
-import mzumot.plantsapp.backend.model.WateringSchedule;
+import mzumot.plantsapp.backend.model.Plant;
+import mzumot.plantsapp.backend.repository.PlantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import mzumot.plantsapp.backend.model.Plant;
-import mzumot.plantsapp.backend.repository.PlantRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Service
 public class PlantService {
 
     @Autowired
     private PlantRepository plantRepository;
     @Autowired
-    PlantMapper plantMapper;
+    private PlantMapper plantMapper;
 
-    public List<PlantDTO> getAllPlants() {
-
-        List<Plant> plants = plantRepository.findAll();
-        return plants.stream().map(plantMapper::toDto)
-                .collect(Collectors.toList());
-
-    }
 
     public PlantDTO getPlantById(Long id) {
         Plant plant = plantRepository.findById(id).orElse(null);
-        return plantMapper.toDto(plant); // Assuming you have a PlantMapper injected
+        return plantMapper.toDto(plant);
     }
 
     public PlantDTO savePlant(PlantDTO plantDTO) {
@@ -53,18 +44,10 @@ public class PlantService {
         plantRepository.save(plantToUpdate);
     }
 
-    public WateringSchedule mapStringToEnum(String wateringScheduleString) {
-        switch (wateringScheduleString) {
-            case "DAILY":
-                return WateringSchedule.DAILY;
-            case "WEEKLY":
-                return WateringSchedule.WEEKLY;
-            case "BIWEEKLY":
-                return WateringSchedule.BIWEEKLY;
-            case "ASNEEDED":
-                return WateringSchedule.ASNEEDED;
-            default:
-                throw new IllegalArgumentException("Invalid watering schedule: " + wateringScheduleString);
-        }
+    public List<PlantDTO> getAllPlants() {
+        List<Plant> plants = plantRepository.findAll();
+        return plants.stream()
+                .map(plantMapper::toDto)
+                .collect(Collectors.toList());
     }
 }

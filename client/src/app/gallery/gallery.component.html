@@ -1,81 +1,81 @@
-<div class="header">
-  <h1>GALLERY | PlantsApp</h1>
-</div>
+<!--<div class="header">-->
+<!--  <h1>GALLERY | PlantsApp</h1>-->
+<!--</div>-->
 
-<app-searchbar></app-searchbar>
+<!--<app-searchbar></app-searchbar>-->
 
-<div class="plant-gallery">
-  <div *ngFor="let plant of plants" class="plant-card">
-    <mat-card>
-      <strong>{{ plant.latinName }}</strong>
-      <mat-card-title>{{ plant.name }}</mat-card-title>
-      <mat-card-content> 
-        <strong>Brief:</strong> 
-        {{ plant.description }}<br />
-        <strong>Watering Schedule:</strong>
-        {{ getWateringScheduleDescription(plant.wateringSchedule) }}<br />
-        <strong>Last Watering Date:</strong> 
-        {{ plant.lastWatered | date }}<br />
-        <img
-          [src]="getPlantImage(plant)"
-          alt="{{ plant.name }}"
-          style="height: 350px; width: 500"
-        />
-        <button mat-button color="primary" (click)="updateLastWatered(plant)">
-          Water Plant
-        </button>
-      </mat-card-content>
-      <button mat-button color="warn" (click)="deletePlant(plant.id)">Delete -</button>
+<!--<div class="plant-gallery">-->
+<!--  <div *ngFor="let plant of plants" class="plant-card">-->
+<!--    <mat-card>-->
+<!--      <strong>{{ plant.latinName }}</strong>-->
+<!--      <mat-card-title>{{ plant.name }}</mat-card-title>-->
+<!--      <mat-card-content> -->
+<!--        <strong>Brief:</strong> -->
+<!--        {{ plant.description }}<br />-->
+<!--        <strong>Watering Schedule:</strong>-->
+<!--        {{ getWateringScheduleDescription(plant.wateringSchedule) }}<br />-->
+<!--        <strong>Last Watering Date:</strong> -->
+<!--        {{ plant.lastWatered | date }}<br />-->
+<!--        <img-->
+<!--          [src]="getPlantImage(plant)"-->
+<!--          alt="{{ plant.name }}"-->
+<!--          style="height: 350px; width: 500"-->
+<!--        />-->
+<!--        <button mat-button color="primary" (click)="updateLastWatered(plant)">-->
+<!--          Water Plant-->
+<!--        </button>-->
+<!--      </mat-card-content>-->
+<!--      <button mat-button color="warn" (click)="deletePlant(plant.id)">Delete -</button>-->
 
-    </mat-card>
-  </div>
-</div>
+<!--    </mat-card>-->
+<!--  </div>-->
+<!--</div>-->
 
-<div>
-  <mat-card-title> Add a new plant: </mat-card-title>
-  <mat-card-actions>
-    <form (submit)="addPlant()">
-      <input
-        type="text"
-        [(ngModel)]="newPlant.name"
-        name="name"
-        placeholder="Name"
-        required
-      /><br />
-      <input
-        type="text"
-        [(ngModel)]="newPlant.latinName"
-        name="latinName"
-        placeholder="LatinName"
-      /><br />
-      <input
-        type="text"
-        [(ngModel)]="newPlant.description"
-        name="description"
-        placeholder="Description"
-      /><br />
-      <label for="wateringSchedule">Watering Schedule:</label><br />
-      <select [(ngModel)]="newPlant.wateringSchedule" name="wateringSchedule">
-        <br />
-        <option *ngFor="let schedule of wateringSchedules" [value]="schedule">
-          {{ schedule }}
-        </option>
-      </select>
-      <div>
-        <label for="plantImage">Plant Image:</label>
-        <input
-          type="file"
-          id="plantImage"
-          name="plantImage"
-          (change)="onFileChange($event)"
-          accept="image/png"
-        />
-        <img *ngIf="imageUrl" [src]="imageUrl" alt="Plant Image" />
-      </div>
-      <button type="submit">Add Plant</button>
-    </form>
-  </mat-card-actions>
-</div>
+<!--<div>-->
+<!--  <mat-card-title> Add a new plant: </mat-card-title>-->
+<!--  <mat-card-actions>-->
+<!--    <form (submit)="addPlant()">-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        [(ngModel)]="newPlant.name"-->
+<!--        name="name"-->
+<!--        placeholder="Name"-->
+<!--        required-->
+<!--      /><br />-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        [(ngModel)]="newPlant.latinName"-->
+<!--        name="latinName"-->
+<!--        placeholder="LatinName"-->
+<!--      /><br />-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        [(ngModel)]="newPlant.description"-->
+<!--        name="description"-->
+<!--        placeholder="Description"-->
+<!--      /><br />-->
+<!--      <label for="wateringSchedule">Watering Schedule:</label><br />-->
+<!--      <select [(ngModel)]="newPlant.wateringSchedule" name="wateringSchedule">-->
+<!--        <br />-->
+<!--        <option *ngFor="let schedule of wateringSchedules" [value]="schedule">-->
+<!--          {{ schedule }}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--      <div>-->
+<!--        <label for="plantImage">Plant Image:</label>-->
+<!--        <input-->
+<!--          type="file"-->
+<!--          id="plantImage"-->
+<!--          name="plantImage"-->
+<!--          (change)="onFileChange($event)"-->
+<!--          accept="image/png"-->
+<!--        />-->
+<!--        <img *ngIf="imageUrl" [src]="imageUrl" alt="Plant Image" />-->
+<!--      </div>-->
+<!--      <button type="submit">Add Plant</button>-->
+<!--    </form>-->
+<!--  </mat-card-actions>-->
+<!--</div>-->
 
 
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->

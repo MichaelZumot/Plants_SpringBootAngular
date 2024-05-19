@@ -1,3 +1,15 @@
 <div class="header">
     <h1>Mynamai | Medicheck</h1>
 
+
+    <div class="card" *ngFor="let medicine of medicines">
+        <!-- <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap"> -->
+        <div class="card-body">
+            <h4 class="card-title">Pharmaceutical Name: {{ medicine.name }}</h4>
+            <p class="card-text">Quantity: {{ medicine.quantity }}</p>
+            <p><strong>💧💧Quantity:</strong> {{ medicine.quantity }}</p>
+            <p><strong>🗓ExpiryDate:</strong> {{ medicine.expiryDate | date }}</p>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

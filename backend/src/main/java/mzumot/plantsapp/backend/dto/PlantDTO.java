@@ -3,6 +3,7 @@ package mzumot.plantsapp.backend.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mzumot.plantsapp.backend.model.WateringSchedule;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,6 @@ public class PlantDTO {
     private String latinName;
     private String description;
     private String profilePicture;
-    private String wateringSchedule;
+    private WateringSchedule wateringSchedule;
     private LocalDate lastWatered;
 }

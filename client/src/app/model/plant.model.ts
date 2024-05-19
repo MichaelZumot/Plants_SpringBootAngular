@@ -15,3 +15,4 @@ export interface Plant {
   wateringSchedule: WateringSchedule;
   lastWatered: Date;
 }
+

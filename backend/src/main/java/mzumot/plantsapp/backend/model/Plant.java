@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 
@@ -23,16 +22,23 @@ public class Plant implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name", unique = true)
+
     private String name;
     @Column(name = "latin_name")
     private String latinName;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "profile_picture")
     private String profilePicture;
+
     @Column(name = "watering_schedule")
-    private String wateringSchedule;
+    @Enumerated(EnumType.STRING)
+
+    private WateringSchedule wateringSchedule;
     @Column(name = "last_watered")
+
     private LocalDate lastWatered;
 
     public Plant(Long id, String name) {

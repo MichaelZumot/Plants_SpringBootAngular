@@ -1,32 +1,27 @@
 <div class="header">
     <h1>PlantScopus</h1>
   </div>
-  <app-searchbar></app-searchbar>
+<!--  <app-searchbar></app-searchbar>-->
   <br>
 
+<!--<div class="card" *ngFor="let plant of plants">-->
+<!--    &lt;!&ndash; other card content &ndash;&gt;-->
+<!--    <p>{{ plant | json }}</p>-->
+<!--</div>-->
 
 
-  <div class="card">
+<div class="card" *ngFor="let plant of plants">
     <!-- <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap"> -->
-    <div *ngFor="let plant of plants" class="plant-card">
-      <div class="card-body">
-      <h4 class="card-title">{{ plant.name}}</h4>
-      {{ plant.description }}<br />
-      <strong>💧💧Watering scheudle:</strong>
-      {{ getWateringScheduleDescription(plant.wateringSchedule) }}<br />
-      <strong>🗓️Last watered:</strong> 
-      {{ plant.lastWatered | date }}<br />
-      <img
-        [src]="getPlantImage(plant)"
-        alt="{{ plant.name }}"
-        style="height: 350px; width: 500"
-      />
-      <button mat-button color="primary" (click)="updateLastWatered(plant)"></button>
-      <a (click)="updateLastWatered(plant)" class="btn btn-primary">Water</a>
+    <div class="card-body">
+        <h4 class="card-title">{{ plant.name }}</h4>
+        <p class="card-text">{{ plant.description }}</p>
+        <p><strong>💧💧Watering schedule:</strong> {{ getWateringScheduleDescription(plant.wateringSchedule) }}</p>
+        <p><strong>🗓️Last watered:</strong> {{ plant.lastWatered | date }}</p>
+<!--        <img [src]="getPlantImage(plant)" alt="{{ plant.name }}" style="height: 350px; width: 500px;">-->
+        <button (click)="updateLastWatered(plant)">Water</button>
     </div>
-  </div>
-
-  <div>
+</div>
+ <div>
     <mat-card-title> Add a new plant: </mat-card-title>
     <mat-card-actions>
       <form (submit)="addPlant()">
@@ -49,7 +44,7 @@
           name="description"
           placeholder="Description"
         /><br />
-        <label for="wateringSchedule">Watering Schedule:</label><br />
+        <label> Watering Schedule:</label><br />
         <select [(ngModel)]="newPlant.wateringSchedule" name="wateringSchedule">
           <br />
           <option *ngFor="let schedule of wateringSchedules" [value]="schedule">

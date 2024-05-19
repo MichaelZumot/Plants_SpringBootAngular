@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class MedicineDTO {
     private Long id;
     private String name;
-    private LocalDate expiryDate;
+    private LocalDateTime expiryDate;
     private Integer quantity;
 
 }

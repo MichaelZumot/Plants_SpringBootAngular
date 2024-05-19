@@ -28,17 +28,25 @@ export class PlantsComponent implements OnInit {
     this.fetchPlants();
   }
 
-  fetchPlants(): void {
-    this.plantService.getPlants().subscribe(
-      (plants) => {
-        this.plants = plants;
-        console.log("Plants received:", this.plants);
-      },
-      (error) => {
-        console.error("Error fetching plants:", error);
-      }
-    );
-  }
+    fetchPlants(): void {
+        this.plantService.getPlants().subscribe(
+            (response: Plant[] | any) => {
+                if (Array.isArray(response)) {
+                    this.plants = response;
+                    console.log("Plants received:", this.plants);
+                } else if (typeof response === 'object' && response._embedded && Array.isArray(response._embedded.plants)) {
+                    // Handle cases where the response is an object with _embedded property containing the array of plants
+                    this.plants = response._embedded.plants;
+                    console.log("Plants received:", this.plants);
+                } else {
+                    console.error("Invalid response format. Expected an array or an object with '_embedded.plants' property.");
+                }
+            },
+            (error) => {
+                console.error("Error fetching plants:", error);
+            }
+        );
+    }
 
   addPlant(): void {
     this.plantService.addPlant(this.newPlant).subscribe(
@@ -120,15 +128,20 @@ export class PlantsComponent implements OnInit {
     }
   }
 
-  updateLastWatered(plant: Plant): void {
-    this.plantService.updateLastWatered(plant.id).subscribe(
-      () => {
-        console.log("Last watered timestamp updated successfully.");
-        // Refresh the plant list or update the local data accordingly
-      },
-      (error) => {
-        console.error("Error updating last watered timestamp:", error);
-      }
-    );
+  updateLastWatered(plant:Plant): void {
+    // Ensure that plantId is valid before calling the function
+    if (plant) {
+      this.plantService.updateLastWatered(plant).subscribe(
+          () => {
+            console.log("Last watered timestamp updated successfully.");
+          },
+          (error) => {
+            console.error("Error updating last watered timestamp:", error);
+          }
+      );
+    } else {
+      console.error("Invalid plantId:", plant);
+    }
   }
+
 }

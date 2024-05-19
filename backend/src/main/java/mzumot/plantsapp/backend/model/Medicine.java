@@ -1,13 +1,12 @@
 package mzumot.plantsapp.backend.model;
 
-import java.time.LocalDate;
-import java.util.Objects;
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Data
@@ -19,11 +18,11 @@ public class Medicine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="name", unique = true)
+    @Column(name = "name", unique = true)
     private String name;
-    @Column(name="expiry_date")
+    @Column(name = "expiry_date")
     private LocalDate expiryDate;
-    @Column(name="quantity")
+    @Column(name = "quantity")
     private int quantity;
 
     @Override

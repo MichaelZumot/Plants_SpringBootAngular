@@ -5,7 +5,7 @@ import mzumot.plantsapp.backend.model.Plant;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PlantMapper {
     PlantDTO toDto(Plant entity);
 
